@@ -1,0 +1,820 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ONE % STUDY HUB — Welcome</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0c12;
+  --surface: #12151e;
+  --surface2: #1a1e2a;
+  --border: rgba(255,255,255,0.06);
+  --border2: rgba(255,255,255,0.11);
+  --text: #eef0f6;
+  --muted: #7a7f96;
+  --accent: #2ecc7e;
+  --accent-dim: rgba(46,204,126,0.12);
+  --accent-border: rgba(46,204,126,0.28);
+  --blue: #4f8ef7;
+  --amber: #f5a623;
+  --red: #ff5c6a;
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.7;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Subtle grid */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(46,204,126,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(46,204,126,0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Glow blob */
+body::after {
+  content: '';
+  position: fixed;
+  top: -200px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(46,204,126,0.07) 0%, transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.page { position: relative; z-index: 1; }
+
+/* ── NAV ── */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 28px;
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  background: rgba(10,12,18,0.85);
+  backdrop-filter: blur(12px);
+  z-index: 10;
+}
+
+.nav-brand {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+}
+
+.nav-brand span { color: var(--muted); font-weight: 400; }
+
+.nav-pill {
+  font-size: 11px;
+  padding: 5px 14px;
+  border-radius: 40px;
+  background: var(--accent-dim);
+  border: 1px solid var(--accent-border);
+  color: var(--accent);
+  font-family: var(--font-body);
+  font-weight: 500;
+  letter-spacing: 0.05em;
+}
+
+/* ── HERO ── */
+.hero {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 80px 28px 64px;
+  text-align: center;
+}
+
+.hero-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: var(--accent-dim);
+  border: 1px solid var(--accent-border);
+  padding: 5px 16px;
+  border-radius: 40px;
+  margin-bottom: 32px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  animation: breathe 2.4s ease-in-out infinite;
+}
+
+@keyframes breathe { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.35;transform:scale(0.8)} }
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 8vw, 68px);
+  font-weight: 800;
+  line-height: 1.02;
+  letter-spacing: -0.025em;
+  color: var(--text);
+  margin-bottom: 24px;
+}
+
+.hero h1 .line-accent {
+  color: var(--accent);
+  display: block;
+}
+
+.hero-sub {
+  font-size: 16px;
+  color: var(--muted);
+  max-width: 480px;
+  margin: 0 auto 40px;
+  line-height: 1.75;
+  font-weight: 300;
+}
+
+.hero-sub strong { color: var(--text); font-weight: 500; }
+
+.hero-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--accent);
+  color: #0a0c12;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  padding: 14px 28px;
+  border-radius: 40px;
+  text-decoration: none;
+  transition: all 0.2s;
+  letter-spacing: 0.02em;
+}
+
+.hero-cta:hover { background: #3de88f; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(46,204,126,0.3); }
+
+.hero-cta svg { width: 16px; height: 16px; }
+
+/* ── STATS ROW ── */
+.stats-row {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  max-width: 560px;
+  margin: 56px auto 0;
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.stat-item {
+  flex: 1;
+  padding: 24px 20px;
+  text-align: center;
+  border-right: 1px solid var(--border);
+}
+
+.stat-item:last-child { border-right: none; }
+
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1;
+  margin-bottom: 6px;
+}
+
+.stat-num.green { color: var(--accent); }
+.stat-num.blue { color: var(--blue); }
+.stat-num.amber { color: var(--amber); }
+
+.stat-desc {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+/* ── SECTION ── */
+.section {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 80px 28px;
+}
+
+.section-label {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+}
+
+.section h2 {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 4vw, 36px);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.section p {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.75;
+  margin-bottom: 16px;
+  max-width: 560px;
+}
+
+.section p strong { color: var(--text); font-weight: 500; }
+
+/* ── FEELING CARDS ── */
+.feeling-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.feeling-card {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 14px;
+  padding: 22px 20px;
+}
+
+.feeling-icon { font-size: 24px; margin-bottom: 12px; }
+
+.feeling-card h3 {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  color: var(--text);
+}
+
+.feeling-card p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── WHAT WE OFFER ── */
+.offer-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 32px;
+}
+
+.offer-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 20px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: border-color 0.2s;
+}
+
+.offer-item:hover { border-color: var(--accent-border); }
+
+.offer-num {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--accent);
+  min-width: 28px;
+  padding-top: 2px;
+}
+
+.offer-body h4 {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: var(--text);
+}
+
+.offer-body p {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ── COURSES GRID ── */
+.courses-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-top: 32px;
+}
+
+.course-card {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 12px;
+  padding: 18px 16px;
+  text-align: center;
+  transition: all 0.2s;
+}
+
+.course-card:hover { border-color: var(--accent-border); transform: translateY(-2px); }
+
+.course-emoji { font-size: 22px; margin-bottom: 10px; }
+
+.course-code {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--accent);
+  letter-spacing: 0.06em;
+  margin-bottom: 4px;
+}
+
+.course-name {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.4;
+}
+
+.course-badge {
+  display: inline-block;
+  margin-top: 10px;
+  font-size: 9px;
+  padding: 2px 8px;
+  border-radius: 40px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+}
+
+.badge-live { background: rgba(46,204,126,0.15); color: var(--accent); border: 1px solid var(--accent-border); }
+.badge-soon { background: rgba(245,166,35,0.12); color: var(--amber); border: 1px solid rgba(245,166,35,0.3); }
+
+/* ── RULES SECTION ── */
+.rules-card {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 16px;
+  padding: 32px;
+  margin-top: 32px;
+}
+
+.rules-card h3 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: var(--text);
+}
+
+.rule-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+}
+
+.rule-row:last-child { border-bottom: none; padding-bottom: 0; }
+
+.rule-icon { font-size: 16px; min-width: 24px; padding-top: 2px; }
+
+.rule-text { font-size: 14px; color: var(--muted); line-height: 1.6; }
+.rule-text strong { color: var(--text); font-weight: 500; }
+
+/* ── FOUNDER ── */
+.founder-card {
+  background: var(--surface);
+  border: 1px solid var(--border2);
+  border-radius: 16px;
+  padding: 32px;
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  margin-top: 32px;
+}
+
+.founder-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--blue));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 800;
+  color: #0a0c12;
+  flex-shrink: 0;
+}
+
+.founder-body {}
+
+.founder-name {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 3px;
+}
+
+.founder-title {
+  font-size: 12px;
+  color: var(--accent);
+  margin-bottom: 12px;
+  font-weight: 500;
+}
+
+.founder-quote {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.7;
+  font-style: italic;
+}
+
+.founder-quote strong { color: var(--text); font-style: normal; font-weight: 500; }
+
+/* ── CTA BOTTOM ── */
+.cta-section {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 40px 28px 100px;
+  text-align: center;
+}
+
+.cta-box {
+  background: var(--surface);
+  border: 1px solid var(--accent-border);
+  border-radius: 20px;
+  padding: 48px 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-box::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at top, rgba(46,204,126,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cta-box h2 {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 4vw, 34px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin-bottom: 14px;
+  position: relative;
+}
+
+.cta-box p {
+  color: var(--muted);
+  font-size: 15px;
+  max-width: 400px;
+  margin: 0 auto 32px;
+  line-height: 1.7;
+  position: relative;
+}
+
+.cta-buttons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.btn-main {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent);
+  color: #0a0c12;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 14px;
+  padding: 13px 26px;
+  border-radius: 40px;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.btn-main:hover { background: #3de88f; transform: translateY(-1px); }
+
+.btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--muted);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 14px;
+  padding: 13px 26px;
+  border-radius: 40px;
+  text-decoration: none;
+  border: 1px solid var(--border2);
+  transition: all 0.2s;
+}
+
+.btn-ghost:hover { color: var(--text); border-color: var(--border2); background: var(--surface2); }
+
+/* ── FOOTER ── */
+footer {
+  border-top: 1px solid var(--border);
+  padding: 28px;
+  text-align: center;
+}
+
+footer p {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.6;
+}
+
+footer strong { color: var(--accent); font-weight: 600; }
+
+/* ── DIVIDER ── */
+.divider { height: 1px; background: var(--border); max-width: 680px; margin: 0 auto; }
+
+@media (max-width: 560px) {
+  nav { padding: 16px 20px; }
+  .hero { padding: 60px 20px 48px; }
+  .section { padding: 60px 20px; }
+  .feeling-grid { grid-template-columns: 1fr; }
+  .courses-grid { grid-template-columns: repeat(2, 1fr); }
+  .founder-card { flex-direction: column; gap: 16px; }
+  .stats-row { flex-direction: column; }
+  .stat-item { border-right: none; border-bottom: 1px solid var(--border); }
+  .stat-item:last-child { border-bottom: none; }
+  .cta-box { padding: 36px 20px; }
+}
+</style>
+</head>
+<body>
+<div class="page">
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-brand">ONE %<span> STUDY HUB</span></div>
+    <div class="nav-pill">Free · Always</div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-eyebrow">
+      <div class="dot"></div>
+      LUANAR Bunda College · BND Year 1 · 2026
+    </div>
+    <h1>
+      You belong
+      <span class="line-accent">here.</span>
+    </h1>
+    <p class="hero-sub">
+      First year is overwhelming. The notes are many. The lecturers move fast. The exams feel far until they don't. <strong>ONE % Study Hub was built by a student who remembers exactly how that feels.</strong> You are not alone in this.
+    </p>
+    <a href="#start" class="hero-cta">
+      I'm in — show me how it works
+      <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+    </a>
+
+    <!-- STATS -->
+    <div class="stats-row">
+      <div class="stat-item">
+        <div class="stat-num green">100+</div>
+        <div class="stat-desc">Students<br>already in</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num blue">6</div>
+        <div class="stat-desc">Courses<br>covered</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num amber">Free</div>
+        <div class="stat-desc">Always.<br>No strings.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- WE REMEMBER -->
+  <section class="section">
+    <div class="section-label">Why this exists</div>
+    <h2>We remember week one.</h2>
+    <p>You arrived at Bunda not knowing where anything is. The lecture halls are full. The content moves fast. You're trying to make friends, understand your timetable, find notes, and not fall behind — all at the same time.</p>
+    <p>Nobody handed you a map. <strong>So we built one.</strong></p>
+
+    <div class="feeling-grid">
+      <div class="feeling-card">
+        <div class="feeling-icon">📚</div>
+        <h3>The notes are real</h3>
+        <p>Every quiz is built from actual LUANAR lecture slides and past papers. Not random internet questions.</p>
+      </div>
+      <div class="feeling-card">
+        <div class="feeling-icon">🏆</div>
+        <h3>You compete with peers</h3>
+        <p>A leaderboard tracks scores across the group. Healthy competition makes revision feel less like suffering.</p>
+      </div>
+      <div class="feeling-card">
+        <div class="feeling-icon">💬</div>
+        <h3>Discussion per question</h3>
+        <p>Every question has a comment section. When something confuses you, someone in the group likely knows.</p>
+      </div>
+      <div class="feeling-card">
+        <div class="feeling-icon">⚡</div>
+        <h3>Explanations that teach</h3>
+        <p>Getting an answer wrong teaches you more than getting it right. Every explanation comes from the lecture content itself.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- WHAT WE OFFER -->
+  <section class="section" id="start">
+    <div class="section-label">How it works</div>
+    <h2>Three things. Simple.</h2>
+
+    <div class="offer-list">
+      <div class="offer-item">
+        <div class="offer-num">01</div>
+        <div class="offer-body">
+          <h4>A quiz drops in the group</h4>
+          <p>Every week or two a quiz link appears in ONE % Study Hub. You open it in your phone browser — no app needed, no login, no cost.</p>
+        </div>
+      </div>
+      <div class="offer-item">
+        <div class="offer-num">02</div>
+        <div class="offer-body">
+          <h4>You register your name and attempt it</h4>
+          <p>Enter your name and reg number. Answer the questions. Each answer shows you exactly why it is right or wrong — from your actual notes.</p>
+        </div>
+      </div>
+      <div class="offer-item">
+        <div class="offer-num">03</div>
+        <div class="offer-body">
+          <h4>Your score goes on the leaderboard</h4>
+          <p>Your result is saved. You can retry, improve, and climb the board. The group discusses. Everyone gets better together.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- COURSES -->
+  <section class="section">
+    <div class="section-label">Coverage</div>
+    <h2>Your courses. Your content.</h2>
+    <p>Quizzes are built from the same lecture slides your lecturers use. When a new topic is taught, a quiz follows.</p>
+
+    <div class="courses-grid">
+      <div class="course-card">
+        <div class="course-emoji">⚡</div>
+        <div class="course-code">PHY31101</div>
+        <div class="course-name">Physics II</div>
+        <div class="course-badge badge-live">Live</div>
+      </div>
+      <div class="course-card">
+        <div class="course-emoji">🌿</div>
+        <div class="course-code">BIO31101</div>
+        <div class="course-name">General Biology II</div>
+        <div class="course-badge badge-live">Live</div>
+      </div>
+      <div class="course-card">
+        <div class="course-emoji">🧪</div>
+        <div class="course-code">CHE31101</div>
+        <div class="course-name">Chemistry II</div>
+        <div class="course-badge badge-soon">Coming</div>
+      </div>
+      <div class="course-card">
+        <div class="course-emoji">📐</div>
+        <div class="course-code">MAT31101</div>
+        <div class="course-name">College Algebra</div>
+        <div class="course-badge badge-soon">Coming</div>
+      </div>
+      <div class="course-card">
+        <div class="course-emoji">💻</div>
+        <div class="course-code">CAP31101</div>
+        <div class="course-name">Computer Applications</div>
+        <div class="course-badge badge-soon">Coming</div>
+      </div>
+      <div class="course-card">
+        <div class="course-emoji">📝</div>
+        <div class="course-code">LDC31101</div>
+        <div class="course-name">English for Academic Purposes</div>
+        <div class="course-badge badge-live">Live</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- RULES -->
+  <section class="section">
+    <div class="section-label">Community</div>
+    <h2>One group. One standard.</h2>
+    <p>ONE % Study Hub works because everyone in it takes it seriously. A few things that keep it that way.</p>
+
+    <div class="rules-card">
+      <h3>The house rules</h3>
+      <div class="rule-row">
+        <div class="rule-icon">✅</div>
+        <div class="rule-text"><strong>Attempt every quiz genuinely.</strong> Your score is your measure, not your reputation. Nobody is judging.</div>
+      </div>
+      <div class="rule-row">
+        <div class="rule-icon">💬</div>
+        <div class="rule-text"><strong>Discuss, don't just post answers.</strong> The comment section under each question is for understanding — use it.</div>
+      </div>
+      <div class="rule-row">
+        <div class="rule-icon">🤝</div>
+        <div class="rule-text"><strong>Help when you know.</strong> If you understand a concept someone is struggling with, say so. That is what ONE % means.</div>
+      </div>
+      <div class="rule-row">
+        <div class="rule-icon">🔇</div>
+        <div class="rule-text"><strong>No spam, no noise.</strong> The group is for study content only. Keep it clean.</div>
+      </div>
+      <div class="rule-row">
+        <div class="rule-icon">🔄</div>
+        <div class="rule-text"><strong>Retry until you pass.</strong> Every quiz can be retaken. The goal is understanding, not a one-time score.</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- FOUNDER -->
+  <section class="section">
+    <div class="section-label">Who built this</div>
+    <h2>Built by a student. For students.</h2>
+    <p>This is not a university initiative. No lecturer runs this. No institution funds it. ONE % Study Hub was built by one BND student who wanted first-years to have something he didn't have in his own first week.</p>
+
+    <div class="founder-card">
+      <div class="founder-avatar">EL</div>
+      <div class="founder-body">
+        <div class="founder-name">Ernest Leo Mbamera</div>
+        <div class="founder-title">BND Year 2 · Biostatistics · Bunda College</div>
+        <div class="founder-quote">
+          "I remember arriving and feeling like everyone else had a plan except me. The notes were scattered. The past papers were hard to find. The exams came faster than expected. <strong>I built ONE % so that the next person doesn't start from zero.</strong> You already have everything you need, this just makes it easier to find. My support team that includes Amos Chilondola, Andrew Jaziel, Prudence Mwamlima, and others, helped me make this happen. We are all in this together."
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- BOTTOM CTA -->
+  <section class="cta-section">
+    <div class="cta-box">
+      <h2>You're already in the right place.</h2>
+      <p>The quiz is open. The leaderboard is waiting. Your first attempt takes less than 10 minutes.</p>
+      <div class="cta-buttons">
+        <a href="#" class="btn-main">Take your first quiz →</a>
+        <a href="#start" class="btn-ghost">How it works</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p><strong>ONE % STUDY HUB</strong> · LUANAR Bunda College · Built by students, for students · Free forever<br>
+    <span style="font-size:11px;margin-top:6px;display:block;">Questions or content requests — reach out in the group.</span></p>
+  </footer>
+
+</div>
+</body>
+</html>
